@@ -12,3 +12,31 @@ const getTodos =
       throw err
     }
 }
+
+
+
+const updateTodo = 
+  async (req: Request, res: Response) : Promise<void> => {
+    try {
+      const body = req.body as 
+        Pick<ITodo, "name" | "description" | "status">
+
+      const todo: ITodo = new Todo ({
+        name: body.name,
+        description: body.description,
+        status: body.status,
+      })
+
+      const newTodo: ITodo = await todo.save()
+      const allTodos: ITodo = await Todo.find()
+
+      res.status(201).json({
+        message: "Todo added", 
+        todo: newTodo, 
+        Todos: allTodos,
+      })
+    } catch (err) {
+      console.log(err)
+      throw err
+    }
+}
