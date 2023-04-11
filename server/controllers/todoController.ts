@@ -16,7 +16,9 @@ async (req: Request, res: Response) : Promise<void> => {
 
 
 export const addTodo = 
+// use async hanlder??
 async (req: Request, res: Response) : Promise<void> => {
+  console.log('called add', console.log(req.body))
   try {
     const body = req.body as 
       Pick<ITodo, "name" | "description" | "status">

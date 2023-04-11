@@ -32,3 +32,25 @@ code {
 body {
 
 }
+
+h3 {
+  margin-bottom: 2rem;
+}
+
+h1 {
+  margin-bottom: 3rem;
+}
+
+input {
+  font-size: 2em;
+  border-radius: 10px 0 0 10px;
+}
+
+
+.add-button {
+  font-size: 2em;
+  border-radius: 0 10px 10px 0;
+  padding: 1px 13px 2px 13px;
+  background-color: rgb(46, 195, 145);
+  color: whitesmoke;
+}

@@ -1,10 +1,10 @@
 import { writeFile } from 'fs'
 // import { generate } from './types/shortid'
 import express from 'express'
+import cors from 'cors'
 
-console.log('hello again from ts')
 
-writeFile 
+
 
 //// use interfaces for objects
 interface Params {
@@ -17,10 +17,6 @@ type Params2 = {
   a: number
   b: number
 }
-
-const app = express()
-
-
 const add = (a: number, b?: number) => {
   if (b) {
     return a+b
@@ -32,9 +28,10 @@ const add = (a: number, b?: number) => {
 }
 
 
-app.get('/', (req: any) =>{
-  req.name = 'bob'
-  add(1)
-})
+const PORT = 8080
 
-app.listen(3009, ()=> console.log('listening on port 3009'))
+const app = express()
+app.use(cors)
+
+
+app.listen(PORT, ()=> console.log('listening on', PORT))
