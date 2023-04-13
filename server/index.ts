@@ -9,25 +9,29 @@ import dotenv from 'dotenv'
 require('dotenv').config()
 mongoose.set("strictQuery", false)
 const PORT = 8080
-const URI = process.env.ATLAS_URI
+//for TS the URI has to be set to a string.. you cannot simply pass the string straight from .env file
+const URI = `mongodb+srv://${process.env.ATLAS_USER}:${process.env.ATLAS_PW}@cluster0.lmemsbt.mongodb.net/?retryWrites=true&w=majority`
 const options = { useNewUrlParser: true, useUnifiedTypology: true }
+
 const app = express()
 app.use(cors)
 app.use('/', require('./routes/todoRoutes'))
 
-const connectDB = async (URI: string, options: object) => {
+const connectDB = async (URI: string) => {
+  console.log('here')
   try {
-    const connection = await mongoose.connect(URI, options)
-    console.log(`MongoDB Connected: ${connection.connection.host}`.cyan.underline)
+    const connection = await mongoose.connect(URI)
+
+    console.log(`MongoDB Connected: ${connection.connection.host}`)
   } catch (err) {
+    console.log(err)
     throw err
+    process.exit(1)
   }
 }
 
-
-
+connectDB(URI)
 app.listen(PORT, ()=> console.log('listening on', PORT))
-
 
 // //// use interfaces for objects
 // interface Params {
