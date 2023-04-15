@@ -1,38 +1,26 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 
-type Props = {}
+interface Props {
+  // todo: string
+  // setTodo: <React.SetStateActions<string>>
+  addTodo: (e: React.FormEvent) => void
+}
 
-
-
-const AddTodo = (props: Props) => {
-  const [todo, setTodo] = useState('')
-
-  const addTodo = async (e: any, todo: string) => {
-    try{
-      const res = await axios.post(
-        'http://localhost/9000/add_todo', todo
-      )
-      console.log(res)
-    } catch (err) {
-      console.log(err)
-    }
-  }
+const AddTodo = ({ addTodo }: Props) => {
+  const [todo, setTodo] = useState<string>('')
 
   return (
-    <div>
+    <form onSubmit={(e)=> addTodo(e)}>
       <h3 className=''>What did you want to do today?</h3>
       <input 
         type="text" 
-        placeholder='Description'
+        placeholder='Enter a task'
         className=''
         onChange={(e)=> setTodo(e.target.value)}
       />
-      <button 
-        className='add-button'
-        onClick={(e)=> addTodo(e, todo)}
-      >Add</button>
-    </div>
+      <button className='add-button'>Add</button>
+    </form>
   )
 }
 

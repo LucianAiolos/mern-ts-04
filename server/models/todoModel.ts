@@ -5,7 +5,7 @@ const todoSchema = new Schema (
   {
     name: {
       type: String,
-      required: true,
+      required: false,
     },
     description: {
       type: String,
@@ -13,7 +13,7 @@ const todoSchema = new Schema (
     },
     status: {
       type: Boolean,
-      required: true,
+      required: false,
     }
   },
   { timestamps: true }

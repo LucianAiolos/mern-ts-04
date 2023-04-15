@@ -18,16 +18,14 @@ async (req: Request, res: Response) : Promise<void> => {
 export const addTodo = 
 // use async hanlder??
 async (req: Request, res: Response) : Promise<void> => {
-  console.log('called add', console.log(req.body))
   try {
     const body = req.body as 
       Pick<ITodo, "name" | "description" | "status">
       //pick function allow you to pick certain features in an existing model.
-
     const todo: ITodo = new Todo ({
-      name: body.name,
+      // name: body.name,
       description: body.description,
-      status: body.status,
+      // status: body.status,
     })
 
     const newTodo: ITodo = await todo.save()
@@ -39,7 +37,7 @@ async (req: Request, res: Response) : Promise<void> => {
       Todos: allTodos,
     })
   } catch (err) {
-    console.log(err)
+    // console.log(err)
     throw err
   }
 }

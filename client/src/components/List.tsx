@@ -1,15 +1,16 @@
 import React from 'react'
-// import ListItem from '../components/ListItem'
 
-type Props = {}
+// interface Props  {
+//   todos: Todo[]
+//   setTodos: <React.SetStateAction<Todo[]>>
+// }
 
-const List = (props: Props) => {
+const List  = ({}) => {
 
 
   return (
     <div>
       <ul>
-        {/* <ListItem/> */}
       </ul>
     </div>
   )

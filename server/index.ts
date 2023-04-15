@@ -1,6 +1,6 @@
 import express from 'express'
 import cors from 'cors'
-// import path from 'path'
+import path from 'path'
 import mongoose from 'mongoose'
 
 require('dotenv').config()
@@ -21,8 +21,10 @@ const connectDB = async (URI: string) => {
 }
 
 connectDB(URI)
-
 const app = express()
+
+app.use(express.json())
+app.use(express.urlencoded({extended: false}))
 app.use(cors())
 //forgot to call cors function cors()
 app.use('/todos', require('./routes/todoRoutes'))
