@@ -7,14 +7,14 @@ const todoSchema = new Schema (
       type: String,
       required: false,
     },
-    description: {
-      type: String,
-      required: true,
-    },
-    status: {
-      type: Boolean,
-      required: false,
-    }
+    // description: {
+    //   type: String,
+    //   required: true,
+    // },
+    // status: {
+    //   type: Boolean,
+    //   required: false,
+    // }
   },
   { timestamps: true }
 )
