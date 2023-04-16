@@ -4,12 +4,14 @@ import List from './components/List'
 // import { ITodo } from './type'
 // import axios from 'axios'
 
+// set type for list
+
 const App: React.FC = () => {
   const [list, setList] = useState<ITodo[]>([])
   const [todo, setTodo] = useState<string>('')
   
-  const todoList = () => {
-    
+  const todoList = (list: []) => {
+    setList(list)
   }
 
   return (

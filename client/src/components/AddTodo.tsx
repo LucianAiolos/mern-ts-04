@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import axios from 'axios'
+import axios, { AxiosResponse } from 'axios'
 
 interface Props {
   todoList: (e: React.FormEvent, data: ITodo | any) => void
@@ -8,14 +8,17 @@ interface Props {
 const AddTodo = ({ todoList }: Props) => {
   const [data, setData] = useState<string>('')
 
-  const addTodo = async (e: React.FormEvent,  ) => {
+  const addTodo = async (e: React.FormEvent, formData: string ) : AxiosResponse<ApiDataType> => {
     e.preventDefault()
-    console.log('inaddtodo')
     try{
-      const res = await axios.post(
-        'http://localhost:8000/todos/add_todo', {name: data}
-      )
-      console.log(res)
+      const data : string = formData 
+      const res: AxiosResponse<ApiDataType> = await axios.post(
+        'http://localhost:8000/todos/add_todo', {data}
+        )
+      console.log(res.status)
+      if (res.status === 201) {
+        todoList(res)
+      }
     } catch (err) {
       console.log(err)
     }
@@ -23,7 +26,7 @@ const AddTodo = ({ todoList }: Props) => {
 
 
   return (
-    <form onSubmit={(e)=> addTodo(e)}>
+    <form onSubmit={(e)=> addTodo(e, data)}>
       <h3 className=''>What did you want to do toda?</h3>
       <input 
         type="text" 

@@ -18,13 +18,15 @@ async (req: Request, res: Response) : Promise<void> => {
 export const addTodo = 
 // use async hanlder??
 async (req: Request, res: Response) : Promise<void> => {
+  console.log(req.body)
   try {
-    const body = req.body as 
-      Pick<ITodo, "name" | "description" | "status">
+    const {name} = req.body
+    console.log(name)
+      // Pick<ITodo, "name" | "description" | "status">
       //pick function allow you to pick certain features in an existing model.
     const todo: ITodo = new Todo ({
       // name: body.name,
-      description: body.description,
+      name: name,
       // status: body.status,
     })
 
