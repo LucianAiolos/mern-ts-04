@@ -1,4 +1,4 @@
-export interface Todo{
+interface ITodo{
   id: number
   todo: string
   isDone: boolean
