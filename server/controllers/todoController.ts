@@ -33,11 +33,17 @@ async (req: Request, res: Response) : Promise<void> => {
     const newTodo: ITodo = await todo.save()
     const allTodos: ITodo[] = await Todo.find()
 
-    res.status(201).json({
-      message: "Todo added", 
-      todo: newTodo, 
-      Todos: allTodos,
-    })
+    if(newTodo) {
+      res.status(201).json({
+        message: "Todo added", 
+        todo: newTodo, 
+        Todos: allTodos,
+      })
+    } else {
+      res.status(400).json({
+        message: "Error Occured",
+      })
+    }
   } catch (err) {
     // console.log(err)
     throw err

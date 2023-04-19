@@ -11,9 +11,9 @@ const AddTodo = ({ updateList } : Props) => {
   const addTodo = async (e: React.FormEvent, formData: string ) => {
     e.preventDefault()
     try{
-      const data : string = formData 
+      const name : string = formData 
       const res: AxiosResponse<ApiDataType> = await axios.post(
-        'http://localhost:8000/todos/add_todo', {data}
+        'http://localhost:8000/todos/add_todo', {name}
         )
       console.log(res.status)
       if (res.status === 201) {
