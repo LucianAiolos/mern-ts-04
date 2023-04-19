@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import axios, { AxiosResponse } from 'axios'
 
-interface Props {
-  todoList: (e: React.FormEvent, data: ITodo | any) => void
+type Props = {
+  updateList: (e: React.FormEvent, data: string ) => void
 }
 
-const AddTodo = ({ todoList }: Props) => {
+const AddTodo = ({ updateList } : Props) => {
   const [data, setData] = useState<string>('')
 
-  const addTodo = async (e: React.FormEvent, formData: string ) : AxiosResponse<ApiDataType> => {
+  const addTodo = async (e: React.FormEvent, formData: string ) => {
     e.preventDefault()
     try{
       const data : string = formData 
@@ -17,7 +17,8 @@ const AddTodo = ({ todoList }: Props) => {
         )
       console.log(res.status)
       if (res.status === 201) {
-        todoList(res)
+        console.log(res.data)
+        // updateList(e, )
       }
     } catch (err) {
       console.log(err)
