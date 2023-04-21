@@ -10,8 +10,9 @@ const App: React.FC = () => {
   const [list, setList] = useState<ITodo[]>([])
   const [todo, setTodo] = useState<string>('')
   
-  const updateList = (e: React.FormEvent, todo: string): void => {
+  const updateList = (e: React.FormEvent, list: []): void => {
     e.preventDefault()
+    console.log(list, 'list')
     setList(list)
   }
 

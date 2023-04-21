@@ -2,8 +2,10 @@ import React, { useState, useEffect } from 'react'
 import axios, { AxiosResponse } from 'axios'
 
 type Props = {
-  updateList: (e: React.FormEvent, data: string ) => void
+  updateList: (e: React.FormEvent, list: [] ) => void
 }
+
+type Todos = []
 
 const AddTodo = ({ updateList } : Props) => {
   const [data, setData] = useState<string>('')
@@ -12,13 +14,15 @@ const AddTodo = ({ updateList } : Props) => {
     e.preventDefault()
     try{
       const name : string = formData 
-      const res: AxiosResponse<ApiDataType> = await axios.post(
+      // types for axios are wrong
+      const res : any = await axios.post(
         'http://localhost:8000/todos/add_todo', {name}
         )
       console.log(res.status)
       if (res.status === 201) {
-        console.log(res.data)
-        // updateList(e, )
+        // const todos : []
+        console.log(res.data.todos)
+        // updateList(e, todos)
       }
     } catch (err) {
       console.log(err)

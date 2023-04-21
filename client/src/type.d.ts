@@ -10,3 +10,5 @@ type ApiDataType = {
   status: string
   data: ITodo[]
 }
+
+// type Todos = []

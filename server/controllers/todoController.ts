@@ -13,8 +13,6 @@ async (req: Request, res: Response) : Promise<void> => {
   }
 }
 
-
-
 export const addTodo = 
 // use async hanlder??
 async (req: Request, res: Response) : Promise<void> => {
@@ -36,8 +34,8 @@ async (req: Request, res: Response) : Promise<void> => {
     if(newTodo) {
       res.status(201).json({
         message: "Todo added", 
-        todo: newTodo, 
-        Todos: allTodos,
+        // todo: newTodo, 
+        todos: allTodos,
       })
     } else {
       res.status(400).json({
