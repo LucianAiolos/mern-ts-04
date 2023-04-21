@@ -5,7 +5,6 @@ type Props = {
   updateList: (e: React.FormEvent, list: [] ) => void
 }
 
-type Todos = []
 
 const AddTodo = ({ updateList } : Props) => {
   const [data, setData] = useState<string>('')
@@ -20,9 +19,8 @@ const AddTodo = ({ updateList } : Props) => {
         )
       console.log(res.status)
       if (res.status === 201) {
-        // const todos : []
-        console.log(res.data.todos)
-        // updateList(e, todos)
+        const listData = res.data.todos
+        updateList(e, listData)
       }
     } catch (err) {
       console.log(err)

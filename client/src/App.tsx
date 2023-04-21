@@ -7,13 +7,17 @@ import List from './components/List'
 // set type for list
 
 const App: React.FC = () => {
-  const [list, setList] = useState<ITodo[]>([])
+  const [list, setList] = useState<[]>([])
   const [todo, setTodo] = useState<string>('')
   
-  const updateList = (e: React.FormEvent, list: []): void => {
+  const loadList = () => {
+
+  }
+
+  const updateList = (e: React.FormEvent, listData: []): void => {
     e.preventDefault()
-    console.log(list, 'list')
-    setList(list)
+    console.log(listData, 'list')
+    setList(listData)
   }
 
   return (
@@ -22,9 +26,14 @@ const App: React.FC = () => {
       <AddTodo 
         updateList={updateList}
       />
-      {/* <List 
-        list={list}
-      /> */}
+      {
+        list && 
+        <>
+          <List 
+            list={list}
+          />
+        </>
+      }
     </div>
   );
 }

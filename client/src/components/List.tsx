@@ -1,15 +1,14 @@
 import React from 'react'
 
-// interface Props  {
-//   todos: Todo[]
-//   setTodos: <React.SetStateAction<Todo[]>>
-// }
 
-const List  = ({}) => {
 
+const List = ({ list: [] }) : JSX.Element  => {
+
+  console.log(list)
 
   return (
     <div>
+      <h1>HERE IS THE LIST OF TODOS</h1>
       <ul>
       </ul>
     </div>
